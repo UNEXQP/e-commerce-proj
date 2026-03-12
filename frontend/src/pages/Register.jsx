@@ -15,7 +15,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:8000/api/user/register', {
+            const response = await fetch('https://e-commerce-proj-kba1.onrender.com/api/user/register', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

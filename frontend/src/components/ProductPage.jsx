@@ -15,12 +15,15 @@ export const ProductPage = () => {
             const existingItems = prevCart.find((item) => item.id === product.id)
 
             if (existingItems) {
+
                 return prevCart.map((item) => {
                     return item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
                 })
+
             } else {
                 return [...prevCart, { ...product, quantity: 1 }]
             }
+
         })
     }
 
@@ -69,7 +72,7 @@ export const ProductPage = () => {
                     </button>
                 </div>
             )}
-            
+
             {page === "products" && (
                 <div>
                     <div className="flex items-center justify-center mt-3" onClick={() => setPage("cart")}>
