@@ -8,7 +8,7 @@ const Register = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [message, setMesssage] = useState("")
+    const [message, setMessage] = useState("")
     const navigate = useNavigate()
 
 
@@ -25,9 +25,9 @@ const Register = () => {
             const data = await response.json()
 
             if (!response.ok) {
-                setMesssage(data.message || "register failed")
+                setMessage(data.message || "register failed")
             } else {
-                setMesssage("congrats on registering")
+                setMessage("congrats on registering")
                 navigate("/dashboard")
             }
 
