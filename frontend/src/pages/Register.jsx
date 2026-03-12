@@ -8,7 +8,7 @@ const Register = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [message, setMesssage] = useState(true)
+    const [message, setMesssage] = useState("")
     const navigate = useNavigate()
 
 
@@ -52,8 +52,7 @@ const Register = () => {
                             <div
                                 role="alert"
                                 aria-live="assertive"
-                                className={`mb-4 text-sm text-center ${status === "error" ? "text-red-600" : "text-green-600"
-                                    }`}
+                                className="mb-4 text-sm text-center text-red-600"
                             >
                                 {message}
                             </div>
