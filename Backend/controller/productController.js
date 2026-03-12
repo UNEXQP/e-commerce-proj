@@ -1,6 +1,6 @@
 import { json } from "express";
 import Product from "../models/productmodel.js";
-import { redisClient } from "../server.js";
+
 
 
 export const createProduct = async (req, res) => {
