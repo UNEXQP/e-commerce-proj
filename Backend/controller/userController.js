@@ -15,7 +15,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "Email already in use" });
     }
 
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, password });
     await newUser.save();
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_TOKEN, {
