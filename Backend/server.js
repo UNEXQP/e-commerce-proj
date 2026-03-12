@@ -4,28 +4,24 @@ import dotenv from "dotenv";
 import cors from "cors";
 import authRoute from "./routes/userRoutes.js";
 import productRouter from "./routes/productRoutes.js";
-import { createClient } from "redis";
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
-
-mongoose.connect(process.env.MONGO_URI) 
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected successfully"))
   .catch(err => console.error(err));
 
 
-export const redisClient = createClient({
-  url: process.env.REDIS_URL 
+
+// Test route
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
 });
-
-redisClient.on("error", (err) => console.log("Redis Client Error", err));
-
-await redisClient.connect();
-console.log("Connected to Redis Cloud!");
 
 
 
