@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+
+
+
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'DM Sans', sans-serif;
+
+  --color-zelux-cream:   #f5f0e8;
+  --color-zelux-dark:    #1a1008;
+  --color-zelux-accent:  #7c4f1a;
+  --color-zelux-muted:   #5a4a38;
+  --color-zelux-body:    #6b5a46;
+  --color-zelux-hint:    #8a7562;
+  --color-zelux-border:  #e8e2d9;
+  --color-zelux-divider: #d4c9b8;
+  --color-zelux-card:    #e0d8cc;
+
+}
