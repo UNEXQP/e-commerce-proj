@@ -1,22 +1,28 @@
-import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom"
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { Navbar } from "./components/Navbar";
 import "./index.css"
+import { Cart } from "./pages/Cart";
+import { CartProvider } from "./context/CreateContext";
 
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/nav" element={<Navbar />} />
-        </Routes>
-      </BrowserRouter>
+
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+
     </>
   )
 }

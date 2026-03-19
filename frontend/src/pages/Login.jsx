@@ -1,14 +1,12 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
-
-    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [message, setMesssage] = useState(true)
+    const [message, setMessage] = useState("")
     const navigate = useNavigate()
 
 
@@ -20,15 +18,15 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email, password })
+                body: JSON.stringify({ email, password })
             })
             const data = await response.json()
 
             if (!response.ok) {
-                setMesssage(data.message || "login failed")
+                setMessage(data.message || "login failed")
             } else {
-                setMesssage("welcome home")
-                navigate("/")
+                setMessage("welcome home")
+                navigate("/dashboard")
             }
 
 
@@ -42,9 +40,9 @@ const Login = () => {
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
                 <div className="w-96 bg-white px-8 py-10 shadow-lg rounded-lg">
 
-                    <form onSubmit={handleRegister} noValidate>
+                    <form onSubmit={handleLogin} noValidate>
                         <h2 className="text-2xl text-center font-bold mb-6">
-                            Register
+                            Login
                         </h2>
 
                         {/* Accessible status message */}
@@ -52,32 +50,15 @@ const Login = () => {
                             <div
                                 role="alert"
                                 aria-live="assertive"
-                                className={`mb-4 text-sm text-center ${status === "error" ? "text-red-600" : "text-green-600"
+                                className={`mb-4 text-sm text-center  text-red-600 "
                                     }`}
                             >
                                 {message}
                             </div>
                         )}
 
-                        {/* Name */}
-                        <div className="mb-4">
-                            <label
-                                htmlFor="name"
-                                className="block text-sm font-medium text-gray-700 mb-1"
-                            >
-                                Full Name
-                            </label>
-                            <input
-                                id="name"
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                required
-                            />
-                        </div>
 
-                        {/* Email */}
+
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
@@ -95,7 +76,7 @@ const Login = () => {
                             />
                         </div>
 
-                        {/* Password */}
+
                         <div className="mb-6">
                             <label
                                 htmlFor="password"
@@ -118,13 +99,13 @@ const Login = () => {
                             type="submit"
                             className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                         >
-                            Register
+                            Login
                         </button>
 
                         <p className="text-sm text-center mt-4">
                             don't have an account?{" "}
                             <Link to="/" className="text-blue-600 underline">
-                                 Register here
+                                Register here
                             </Link>
                         </p>
                     </form>

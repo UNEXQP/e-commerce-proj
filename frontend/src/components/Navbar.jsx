@@ -1,8 +1,12 @@
 import "../index.css"
+import { Cart } from "../pages/Cart"
+import { Link } from "react-router-dom"
+import { useCart } from "../context/CreateContext"
 
 
 
 export const Navbar = () => {
+    const { cartCount } = useCart()
     return (
         <>
             <div className="flex justify-between items-center px-10 py-4 bg-white border-b border-zelux-border shadow-sm">
@@ -19,9 +23,9 @@ export const Navbar = () => {
                     ))}
                 </div>
 
-                <div className="bg-zelux-accent text-white text-xs px-4 py-2 rounded-full tracking-wide cursor-pointer">
-                    Cart (0)
-                </div>
+                <button className="bg-zelux-accent text-white text-xs px-4 py-2 rounded-full tracking-wide cursor-pointer" >
+                    <Link to="/cart">Cart ({cartCount})</Link>
+                </button>
             </div>
         </>
     )
