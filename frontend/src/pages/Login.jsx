@@ -10,6 +10,8 @@ const Login = () => {
     const navigate = useNavigate()
 
 
+   
+
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
@@ -25,6 +27,7 @@ const Login = () => {
             if (!response.ok) {
                 setMessage(data.message || "login failed")
             } else {
+                localStorage.setItem("token", data.token)
                 setMessage("welcome home")
                 navigate("/dashboard")
             }
@@ -50,8 +53,8 @@ const Login = () => {
                             <div
                                 role="alert"
                                 aria-live="assertive"
-                                className={`mb-4 text-sm text-center  text-red-600 "
-                                    }`}
+                                className={"mb-4 text-sm text-center  text-red-600 "
+                                    }
                             >
                                 {message}
                             </div>

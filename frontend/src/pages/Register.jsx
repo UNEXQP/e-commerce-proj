@@ -27,6 +27,7 @@ const Register = () => {
             if (!response.ok) {
                 setMessage(data.message || "register failed")
             } else {
+                localStorage.setItem("token",data.token)
                 setMessage("congrats on registering")
                 navigate("/dashboard")
             }
@@ -52,7 +53,7 @@ const Register = () => {
                             <div
                                 role="alert"
                                 aria-live="assertive"
-                                className="mb-4 text-sm text-center text-red-600"
+                                className={`mb-4 text-sm text-center ${message === "congrats on registering" ? "text-green-600" : "text-red-600"}`}
                             >
                                 {message}
                             </div>

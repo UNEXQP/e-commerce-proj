@@ -6,6 +6,7 @@ import { Navbar } from "./components/Navbar";
 import "./index.css"
 import { Cart } from "./pages/Cart";
 import { CartProvider } from "./context/CreateContext";
+import ProtectedRoutes from "../protectedRoutes/ProtectedRoutes";
 
 
 function App() {
@@ -16,7 +17,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard"
+              element=
+              {<ProtectedRoutes>
+                <Dashboard />
+              </ProtectedRoutes>} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
